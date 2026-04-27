@@ -1,0 +1,64 @@
+# Maintainer: justforlxz <justforlxz@gmail.com>
+pkgname=golang-deepin-lib-git
+pkgver=6.0.0.r7.g0e8fa1d
+pkgrel=1
+pkgdesc='A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.'
+arch=('any')
+url="https://github.com/linuxdeepin/go-lib"
+license=('GPL3')
+depends=(
+    'dbus'
+    'libpulse'
+    'gdk-pixbuf2'
+    'gdk-pixbuf-xlib'
+    'mobile-broadband-provider-info'
+    'libx11'
+    'libcanberra'
+    'golang-gopkg-alecthomas-kingpin.v2'
+    'golang-deepin-gir-git'
+    'golang-github-linuxdeepin-go-x11-client-git'
+    'golang-golang-x-net'
+    'golang-golang-x-image'
+)
+checkdepends=(
+    'iso-codes'
+    'golang-gopkg-check.v1'
+    'golang-gopkg-yaml.v3'
+    'golang-github-fsnotify-fsnotify'
+    'golang-github-stretchr-testify'
+    'git'
+    'dash'
+) # git needed only for go get
+conflicts=('golang-deepin-lib')
+provides=('golang-deepin-lib')
+groups=('deepin-git')
+source=('source.tar.gz')
+sha512sums=('SKIP')
+
+prepare() {
+  cd $deepin_source_name
+  sed -i 's|"sh"|"dash"|' shell/shell_test.go
+}
+
+check() {
+  export GO111MODULE=off
+  export GOPATH="$srcdir/build:/usr/share/gocode"
+  mkdir -p "$srcdir"/build/src/github.com/linuxdeepin
+  cp -a "$srcdir"/$deepin_source_name "$srcdir"/build/src/github.com/linuxdeepin/go-lib
+  cd "$srcdir"/build/src/github.com/linuxdeepin/go-lib
+  # TODO: make packages for them
+  go get github.com/cryptix/wav \
+         github.com/smartystreets/goconvey/convey \
+         github.com/mozillazg/go-pinyin \
+         github.com/godbus/dbus \
+         github.com/youpy/go-wav
+  # passwd: test needs to access /etc/passwd
+  # gm: needs gmssl
+  go test -v $(go list ./... | grep -v -e lib/users/passwd -e lib/gm)
+}
+
+package() {
+  mkdir -p "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin
+  cp -a "$srcdir/$deepin_source_name" "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-lib
+  rm -r "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-lib/debian
+}
