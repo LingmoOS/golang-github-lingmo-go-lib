@@ -1,7 +1,7 @@
-Source: golang-github-linuxdeepin-go-lib
+Source: golang-github-lingmo-go-lib
 Section: devel
 Priority: extra
-Maintainer: Deepin Packages Builder <packages@deepin.com>
+Maintainer: Lingmo OS Team <team@lingmo.org>
 Build-Depends: debhelper (>= 9), dh-golang, golang-go,
  golang-github-linuxdeepin-go-x11-client-dev,
  golang-gopkg-check.v1-dev, golang-github-smartystreets-goconvey-dev, golang-golang-x-image-dev,
