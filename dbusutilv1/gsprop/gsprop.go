@@ -9,9 +9,9 @@ import (
 	"sync"
 
 	"github.com/godbus/dbus/v5"
-	gio "github.com/linuxdeepin/go-gir/gio-2.0"
-	"github.com/linuxdeepin/go-lib/dbusutilv1"
-	"github.com/linuxdeepin/go-lib/gsettings"
+	gio "github.com/LingmoOS/go-gir-generator/gio-2.0"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutilv1"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gsettings"
 )
 
 type base struct {

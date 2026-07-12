@@ -7,7 +7,7 @@
 package main
 
 import (
-	"github.com/linuxdeepin/go-lib/notify"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/notify"
 )
 
 func init() {

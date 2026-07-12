@@ -88,7 +88,7 @@ func TestService_RequestName(t *testing.T) {
 		t.Error("Unexpected error:", err)
 	}
 
-	const name = "org.deepin.dde.lib.RequestName"
+	const name = "org.lingmo.lib.RequestName"
 	err = service.RequestName(name)
 	if err != nil {
 		t.Error("Unexpected error calling RequestName:", err)
@@ -114,7 +114,7 @@ func (o *srvObject1) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject1) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object1"
+	return "org.lingmo.lib.Object1"
 }
 
 func (*srvObject1) Method1() (int, *dbus.Error) {
@@ -132,7 +132,7 @@ func (o srvObject12) GetMethodTable() map[string]interface{} {
 }
 
 func (srvObject12) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object12"
+	return "org.lingmo.lib.Object12"
 }
 
 type srvString string
@@ -142,7 +142,7 @@ func (srvString) GetExportedMethods() ExportedMethods {
 }
 
 func (srvString) GetInterfaceName() string {
-	return "org.deepin.dde.lib.String"
+	return "org.lingmo.lib.String"
 }
 
 func TestService_Export(t *testing.T) {
@@ -156,20 +156,20 @@ func TestService_Export(t *testing.T) {
 		t.Error("Unexpected error:", err)
 	}
 	srvObj1 := &srvObject1{}
-	err = service.Export("/org/deepin/dde/lib/Object1", srvObj1.GetInterfaceName(), srvObj1)
+	err = service.Export("/org/lingmo/lib/Object1", srvObj1.GetInterfaceName(), srvObj1)
 	if err != nil {
 		t.Error("Unexpected error exporting srvObj1:", err)
 	}
 
-	err = service.RequestName("org.deepin.dde.lib.Object1")
+	err = service.RequestName("org.lingmo.lib.Object1")
 	if err != nil {
 		t.Error("Unexpected error calling RequestName:", err)
 	}
 
-	clientObj1 := service.conn.Object("org.deepin.dde.lib.Object1", "/org/deepin/dde/lib/Object1")
+	clientObj1 := service.conn.Object("org.lingmo.lib.Object1", "/org/lingmo/lib/Object1")
 
 	var num int
-	err = clientObj1.Call("org.deepin.dde.lib.Object1.Method1", 0).Store(&num)
+	err = clientObj1.Call("org.lingmo.lib.Object1.Method1", 0).Store(&num)
 	if err != nil {
 		t.Error("Unexpected error calling srvObj1.Method1:", err)
 	}
@@ -188,13 +188,13 @@ func TestService_Export(t *testing.T) {
 	}
 
 	srvObj12 := srvObject12{}
-	err = service.Export("/org/deepin/dde/lib/Object12", srvObj12.GetInterfaceName(), srvObj12)
+	err = service.Export("/org/lingmo/lib/Object12", srvObj12.GetInterfaceName(), srvObj12)
 	if err == nil {
 		t.Error("Expected error due to srvObj12 is not a struct pointer")
 	}
 
 	srvStr := srvString("hello")
-	err = service.Export("/org/deepin/dde/lib/String", srvStr.GetInterfaceName(), srvStr)
+	err = service.Export("/org/lingmo/lib/String", srvStr.GetInterfaceName(), srvStr)
 	if err == nil {
 		t.Error("Expected error due to srvStr is not a struct pointer")
 	}
@@ -216,7 +216,7 @@ func (*srvObject2) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject2) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object2"
+	return "org.lingmo.lib.Object2"
 }
 
 func processSignal(conn *dbus.Conn, fn func(signal *dbus.Signal) bool) {
@@ -244,7 +244,7 @@ func TestService_Emit(t *testing.T) {
 		t.Error("Unexpected error:", err)
 	}
 	srvObj2 := &srvObject2{}
-	const srvObj2Path = "/org/deepin/dde/lib/Object2"
+	const srvObj2Path = "/org/lingmo/lib/Object2"
 	err = service.Export(srvObj2Path, srvObj2.GetInterfaceName(), srvObj2)
 	if err != nil {
 		t.Error("Unexpected error exporting srvObj2:", err)
@@ -260,8 +260,8 @@ func TestService_Emit(t *testing.T) {
 
 	ch1 := make(chan int)
 	go processSignal(service.conn, func(sig *dbus.Signal) bool {
-		if sig.Name == "org.deepin.dde.lib.Object2.Signal1" &&
-			sig.Path == "/org/deepin/dde/lib/Object2" {
+		if sig.Name == "org.lingmo.lib.Object2.Signal1" &&
+			sig.Path == "/org/lingmo/lib/Object2" {
 			ch1 <- 1
 
 			if len(sig.Body) != 0 {
@@ -300,8 +300,8 @@ func TestService_Emit(t *testing.T) {
 	ch2 := make(chan int)
 
 	go processSignal(service.conn, func(sig *dbus.Signal) bool {
-		if sig.Name == "org.deepin.dde.lib.Object2.Signal2" &&
-			sig.Path == "/org/deepin/dde/lib/Object2" {
+		if sig.Name == "org.lingmo.lib.Object2.Signal2" &&
+			sig.Path == "/org/lingmo/lib/Object2" {
 			ch2 <- 1
 
 			expectedBody := []interface{}{"hello", uint32(1)}
@@ -357,7 +357,7 @@ func (*srvObject3) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject3) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object3"
+	return "org.lingmo.lib.Object3"
 }
 
 var serviceEmitPropertyChangedTests = []struct {
@@ -393,7 +393,7 @@ func TestService_EmitPropertyChanged(t *testing.T) {
 		t.Error("Unexpected error:", err)
 	}
 	srvObj3 := &srvObject3{}
-	const srvObj3Path = "/org/deepin/dde/lib/Object3"
+	const srvObj3Path = "/org/lingmo/lib/Object3"
 	err = service.Export(srvObj3Path, srvObj3.GetInterfaceName(), srvObj3)
 	if err != nil {
 		t.Error("Unexpected error exporting srvObj3:", err)
@@ -411,7 +411,7 @@ func TestService_EmitPropertyChanged(t *testing.T) {
 		if !testCase.Err {
 			go processSignal(service.conn, func(sig *dbus.Signal) bool {
 				propName := testCase.PropName
-				if sig.Path == "/org/deepin/dde/lib/Object3" &&
+				if sig.Path == "/org/lingmo/lib/Object3" &&
 					sig.Name == "org.freedesktop.DBus.Properties.PropertiesChanged" {
 					ch <- 1
 
@@ -462,7 +462,7 @@ func (*srvObject4) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject4) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object4"
+	return "org.lingmo.lib.Object4"
 }
 
 var serviceEmitPropertiesChangedTest = []struct {
@@ -544,7 +544,7 @@ func TestService_EmitPropertiesChanged(t *testing.T) {
 		t.Error("Unexpected error:", err)
 	}
 	srvObj4 := &srvObject4{}
-	err = service.Export("/org/deepin/dde/lib/Object4", srvObj4.GetInterfaceName(), srvObj4)
+	err = service.Export("/org/lingmo/lib/Object4", srvObj4.GetInterfaceName(), srvObj4)
 	if err != nil {
 		t.Error("Unexpected error exporting srvObj4:", err)
 	}
@@ -578,7 +578,7 @@ func (obj *srvObject5) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject5) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object5"
+	return "org.lingmo.lib.Object5"
 }
 
 func (obj *srvObject5) Method1() *dbus.Error {
@@ -612,12 +612,12 @@ func TestService_AutoQuit(t *testing.T) {
 	srvObj5 := &srvObject5{
 		s: service,
 	}
-	err = service.Export("/org/deepin/dde/lib/Object5", srvObj5.GetInterfaceName(), srvObj5)
+	err = service.Export("/org/lingmo/lib/Object5", srvObj5.GetInterfaceName(), srvObj5)
 	if err != nil {
 		t.Error("Unexpected error exporting srvObj5:", err)
 	}
 
-	err = service.RequestName("org.deepin.dde.lib.Object5")
+	err = service.RequestName("org.lingmo.lib.Object5")
 	if err != nil {
 		t.Error("Unexpected error calling RequestName:", err)
 	}
@@ -632,11 +632,11 @@ func TestService_AutoQuit(t *testing.T) {
 	}()
 
 	go func() {
-		clientObj5 := service.conn.Object("org.deepin.dde.lib.Object5",
-			"/org/deepin/dde/lib/Object5")
+		clientObj5 := service.conn.Object("org.lingmo.lib.Object5",
+			"/org/lingmo/lib/Object5")
 
 		for i := 0; i < 5; i++ {
-			err = clientObj5.Call("org.deepin.dde.lib.Object5.Method1", 0).Err
+			err = clientObj5.Call("org.lingmo.lib.Object5.Method1", 0).Err
 			if err != nil {
 				t.Error("Unexpected error calling srvObject5.Method1")
 			}
@@ -696,7 +696,7 @@ func (*srvObject6) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject6) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object6"
+	return "org.lingmo.lib.Object6"
 }
 
 func TestService_SetReadCallback(t *testing.T) {
@@ -714,7 +714,7 @@ func TestService_SetReadCallback(t *testing.T) {
 		Prop1: "apple",
 	}
 
-	serverObject6, err := service.NewServerObject("/org/deepin/dde/lib/Object6")
+	serverObject6, err := service.NewServerObject("/org/lingmo/lib/Object6")
 	if err != nil {
 		t.Error("Unexpected error:", err)
 	}
@@ -738,17 +738,17 @@ func TestService_SetReadCallback(t *testing.T) {
 		t.Error("Unexpected error exporting srvObj6:", err)
 	}
 
-	err = service.RequestName("org.deepin.dde.lib.Object6")
+	err = service.RequestName("org.lingmo.lib.Object6")
 	if err != nil {
 		t.Error("Unexpected error calling RequestName:", err)
 	}
 
-	clientObj6 := service.conn.Object("org.deepin.dde.lib.Object6",
-		"/org/deepin/dde/lib/Object6")
+	clientObj6 := service.conn.Object("org.lingmo.lib.Object6",
+		"/org/lingmo/lib/Object6")
 
 	var prop1Value interface{}
 	err = clientObj6.Call(orgFreedesktopDBus+".Properties.Get", 0,
-		"org.deepin.dde.lib.Object6", "Prop1").Store(&prop1Value)
+		"org.lingmo.lib.Object6", "Prop1").Store(&prop1Value)
 	if err != nil {
 		t.Error("Unexpected error getting Prop1 value")
 	}
@@ -772,7 +772,7 @@ func TestService_SetReadCallback(t *testing.T) {
 		})
 
 	err = clientObj6.Call(orgFreedesktopDBus+".Properties.Get", 0,
-		"org.deepin.dde.lib.Object6", "Prop1").Store(&prop1Value)
+		"org.lingmo.lib.Object6", "Prop1").Store(&prop1Value)
 	if err == nil {
 		t.Error("Expected error due to read callback return error")
 	}
@@ -791,7 +791,7 @@ func (*srvObject7) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject7) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object7"
+	return "org.lingmo.lib.Object7"
 }
 
 func TestService_SetWriteCallback(t *testing.T) {
@@ -809,7 +809,7 @@ func TestService_SetWriteCallback(t *testing.T) {
 		Prop1: "apple",
 	}
 
-	serverObject7, err := service.NewServerObject("/org/deepin/dde/lib/Object7")
+	serverObject7, err := service.NewServerObject("/org/lingmo/lib/Object7")
 	if err != nil {
 		t.Error("Unexpected error:", err)
 	}
@@ -833,15 +833,15 @@ func TestService_SetWriteCallback(t *testing.T) {
 		t.Error("Unexpected error exporting srvObj7:", err)
 	}
 
-	err = service.RequestName("org.deepin.dde.lib.Object7")
+	err = service.RequestName("org.lingmo.lib.Object7")
 	if err != nil {
 		t.Error("Unexpected error calling RequestName:", err)
 	}
 
-	clientObj7 := service.conn.Object("org.deepin.dde.lib.Object7",
-		"/org/deepin/dde/lib/Object7")
+	clientObj7 := service.conn.Object("org.lingmo.lib.Object7",
+		"/org/lingmo/lib/Object7")
 	err = clientObj7.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object7", "Prop1", dbus.MakeVariant("orange")).Err
+		"org.lingmo.lib.Object7", "Prop1", dbus.MakeVariant("orange")).Err
 	if err != nil {
 		t.Error("Unexpected error setting prop1 value:", err)
 	}
@@ -865,7 +865,7 @@ func TestService_SetWriteCallback(t *testing.T) {
 	}
 
 	err = clientObj7.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object7", "Prop1", dbus.MakeVariant("banana")).Err
+		"org.lingmo.lib.Object7", "Prop1", dbus.MakeVariant("banana")).Err
 	if err == nil {
 		t.Error("Expected error due to write callback return error:")
 	}
@@ -891,7 +891,7 @@ func (*srvObject8) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject8) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object8"
+	return "org.lingmo.lib.Object8"
 }
 
 func TestService_ConnectChanged(t *testing.T) {
@@ -909,7 +909,7 @@ func TestService_ConnectChanged(t *testing.T) {
 		Prop1: "apple",
 	}
 
-	serverObject8, err := service.NewServerObject("/org/deepin/dde/lib/Object8")
+	serverObject8, err := service.NewServerObject("/org/lingmo/lib/Object8")
 	if err != nil {
 		t.Error("Unexpected error:", err)
 	}
@@ -941,15 +941,15 @@ func TestService_ConnectChanged(t *testing.T) {
 		t.Error("Unexpected error exporting srvObj8:", err)
 	}
 
-	err = service.RequestName("org.deepin.dde.lib.Object8")
+	err = service.RequestName("org.lingmo.lib.Object8")
 	if err != nil {
 		t.Error("Unexpected error calling RequestName:", err)
 	}
 
-	clientObj8 := service.conn.Object("org.deepin.dde.lib.Object8",
-		"/org/deepin/dde/lib/Object8")
+	clientObj8 := service.conn.Object("org.lingmo.lib.Object8",
+		"/org/lingmo/lib/Object8")
 	err = clientObj8.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object8", "Prop1", dbus.MakeVariant("banana")).Err
+		"org.lingmo.lib.Object8", "Prop1", dbus.MakeVariant("banana")).Err
 	if err != nil {
 		t.Error("Unexpected error setting prop1 value:", err)
 	}
@@ -968,7 +968,7 @@ func TestService_ConnectChanged(t *testing.T) {
 
 	// Set the same value to Prop1 again
 	err = clientObj8.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object8", "Prop1", dbus.MakeVariant("banana")).Err
+		"org.lingmo.lib.Object8", "Prop1", dbus.MakeVariant("banana")).Err
 	if err != nil {
 		t.Error("Unexpected error setting prop1 value:", err)
 	}
@@ -997,7 +997,7 @@ func (*srvObject9) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject9) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object9"
+	return "org.lingmo.lib.Object9"
 }
 
 func TestService_PropTag(t *testing.T) {
@@ -1017,23 +1017,23 @@ func TestService_PropTag(t *testing.T) {
 		Prop2: 2,
 		Prop3: 3,
 	}
-	const srvObj9Path = "/org/deepin/dde/lib/Object9"
+	const srvObj9Path = "/org/lingmo/lib/Object9"
 
 	err = service.Export(srvObj9Path, srvObj9.GetInterfaceName(), srvObj9)
 	if err != nil {
 		t.Error("Unexpected error exporting srvObj9:", err)
 	}
 
-	err = service.RequestName("org.deepin.dde.lib.Object9")
+	err = service.RequestName("org.lingmo.lib.Object9")
 	if err != nil {
 		t.Error("Unexpected error calling RequestName:", err)
 	}
 
-	clientObj9 := service.conn.Object("org.deepin.dde.lib.Object9",
-		"/org/deepin/dde/lib/Object9")
+	clientObj9 := service.conn.Object("org.lingmo.lib.Object9",
+		"/org/lingmo/lib/Object9")
 
 	// prop0 ignored
-	_, err = clientObj9.GetProperty("org.deepin.dde.lib.Object9.Prop0")
+	_, err = clientObj9.GetProperty("org.lingmo.lib.Object9.Prop0")
 	if err == nil {
 		t.Error("Expected error due to Prop0 should be ignored")
 	} else {
@@ -1044,7 +1044,7 @@ func TestService_PropTag(t *testing.T) {
 
 	// prop1 access rw - readwrite
 	err = clientObj9.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object9", "Prop1", dbus.MakeVariant(int32(11))).Err
+		"org.lingmo.lib.Object9", "Prop1", dbus.MakeVariant(int32(11))).Err
 	if err != nil {
 		t.Error("Unexpected error setting Prop1 value:", err)
 	}
@@ -1055,7 +1055,7 @@ func TestService_PropTag(t *testing.T) {
 
 	var prop1Value uint32
 	err = clientObj9.Call(orgFreedesktopDBus+".Properties.Get", 0,
-		"org.deepin.dde.lib.Object9", "Prop1").Store(&prop1Value)
+		"org.lingmo.lib.Object9", "Prop1").Store(&prop1Value)
 	if err != nil {
 		t.Error("Unexpected error getting Prop1 value:", err)
 	}
@@ -1067,7 +1067,7 @@ func TestService_PropTag(t *testing.T) {
 	// prop2 access r - read only
 	var prop2Value uint32
 	err = clientObj9.Call(orgFreedesktopDBus+".Properties.Get", 0,
-		"org.deepin.dde.lib.Object9", "Prop2").Store(&prop2Value)
+		"org.lingmo.lib.Object9", "Prop2").Store(&prop2Value)
 	if err != nil {
 		t.Error("Unexpected error getting Prop2 value:", err)
 	}
@@ -1077,20 +1077,20 @@ func TestService_PropTag(t *testing.T) {
 	}
 
 	err = clientObj9.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object9", "Prop2", dbus.MakeVariant(int32(12))).Err
+		"org.lingmo.lib.Object9", "Prop2", dbus.MakeVariant(int32(12))).Err
 	if err == nil {
 		t.Error("Expected error due to Prop2 read only")
 	}
 
 	// prop3 access w - write only
 	err = clientObj9.Call(orgFreedesktopDBus+".Properties.Get", 0,
-		"org.deepin.dde.lib.Object9", "Prop3").Err
+		"org.lingmo.lib.Object9", "Prop3").Err
 	if err == nil {
 		t.Error("Expected error due to Prop2 write only")
 	}
 
 	err = clientObj9.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object9", "Prop3", dbus.MakeVariant(int32(13))).Err
+		"org.lingmo.lib.Object9", "Prop3", dbus.MakeVariant(int32(13))).Err
 	if err != nil {
 		t.Error("Unexpected error setting Prop3 value:", err)
 	}
@@ -1107,11 +1107,11 @@ func TestService_PropTag(t *testing.T) {
 	chP4 := make(chan int)
 	go processSignal(service.conn, func(sig *dbus.Signal) bool {
 		if sig.Name == "org.freedesktop.DBus.Properties.PropertiesChanged" &&
-			sig.Path == "/org/deepin/dde/lib/Object9" {
+			sig.Path == "/org/lingmo/lib/Object9" {
 			chP4 <- 1
 
 			interfaceName := sig.Body[0].(string)
-			expectedInterface := "org.deepin.dde.lib.Object9"
+			expectedInterface := "org.lingmo.lib.Object9"
 			if interfaceName != expectedInterface {
 				t.Errorf("interfaceName expected %q got %q", expectedInterface,
 					interfaceName)
@@ -1132,7 +1132,7 @@ func TestService_PropTag(t *testing.T) {
 	})
 
 	err = clientObj9.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object9", "Prop4", dbus.MakeVariant(int32(14))).Err
+		"org.lingmo.lib.Object9", "Prop4", dbus.MakeVariant(int32(14))).Err
 	if err != nil {
 		t.Error("Unexpected error setting Prop3 value:", err)
 	}
@@ -1152,11 +1152,11 @@ func TestService_PropTag(t *testing.T) {
 	chP5 := make(chan int)
 	go processSignal(service.conn, func(sig *dbus.Signal) bool {
 		if sig.Name == "org.freedesktop.DBus.Properties.PropertiesChanged" &&
-			sig.Path == "/org/deepin/dde/lib/Object9" {
+			sig.Path == "/org/lingmo/lib/Object9" {
 			chP5 <- 1
 
 			interfaceName := sig.Body[0].(string)
-			expectedInterface := "org.deepin.dde.lib.Object9"
+			expectedInterface := "org.lingmo.lib.Object9"
 			if interfaceName != expectedInterface {
 				t.Errorf("interfaceName expected %q got %q", expectedInterface,
 					interfaceName)
@@ -1179,7 +1179,7 @@ func TestService_PropTag(t *testing.T) {
 	})
 
 	err = clientObj9.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object9", "Prop5", dbus.MakeVariant(int32(15))).Err
+		"org.lingmo.lib.Object9", "Prop5", dbus.MakeVariant(int32(15))).Err
 	if err != nil {
 		t.Error("Unexpected error setting Prop3 value:", err)
 	}
@@ -1199,7 +1199,7 @@ func TestService_PropTag(t *testing.T) {
 	chP6 := make(chan int)
 	go processSignal(service.conn, func(sig *dbus.Signal) bool {
 		if sig.Name == "org.freedesktop.DBus.Properties.PropertiesChanged" &&
-			sig.Path == "/org/deepin/dde/lib/Object9" {
+			sig.Path == "/org/lingmo/lib/Object9" {
 			chP6 <- 1
 			return false
 		}
@@ -1207,7 +1207,7 @@ func TestService_PropTag(t *testing.T) {
 	})
 
 	err = clientObj9.Call(orgFreedesktopDBus+".Properties.Set", 0,
-		"org.deepin.dde.lib.Object9", "Prop6", dbus.MakeVariant(int32(16))).Err
+		"org.lingmo.lib.Object9", "Prop6", dbus.MakeVariant(int32(16))).Err
 	if err != nil {
 		t.Error("Unexpected error setting Prop3 value:", err)
 	}
@@ -1255,7 +1255,7 @@ func (*srvObject10) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject10) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object10"
+	return "org.lingmo.lib.Object10"
 }
 
 func TestService_StructProp(t *testing.T) {
@@ -1273,7 +1273,7 @@ func TestService_StructProp(t *testing.T) {
 		Prop1: rect{1, 2, 3, 4},
 	}
 
-	serverObject10, err := service.NewServerObject("/org/deepin/dde/lib/Object10")
+	serverObject10, err := service.NewServerObject("/org/lingmo/lib/Object10")
 	if err != nil {
 		t.Error("Unexpected error:", err)
 	}
@@ -1304,18 +1304,18 @@ func TestService_StructProp(t *testing.T) {
 		t.Error("Unexpected error exporting srvObj10:", err)
 	}
 
-	_ = service.RequestName("org.deepin.dde.lib.Object10")
+	_ = service.RequestName("org.lingmo.lib.Object10")
 	if err != nil {
 		t.Error("Unexpected error calling RequestName:", err)
 	}
 
-	clientObj10 := service.conn.Object("org.deepin.dde.lib.Object10", "/org/deepin/dde/lib/Object10")
+	clientObj10 := service.conn.Object("org.lingmo.lib.Object10", "/org/lingmo/lib/Object10")
 
 	// Test Prop1
 	expectedProp1 := rect{2, 4, 6, 8}
 	testProp1 := func() {
 		err = clientObj10.Call(orgFreedesktopDBus+".Properties.Set", 0,
-			"org.deepin.dde.lib.Object10", "Prop1", dbus.MakeVariant(expectedProp1)).Err
+			"org.lingmo.lib.Object10", "Prop1", dbus.MakeVariant(expectedProp1)).Err
 
 		if err != nil {
 			t.Error("Unexpected error setting Prop1:", err)
@@ -1339,7 +1339,7 @@ func TestService_StructProp(t *testing.T) {
 
 	testProp2 := func() {
 		err = clientObj10.Call(orgFreedesktopDBus+".Properties.Set", 0,
-			"org.deepin.dde.lib.Object10", "Prop2", dbus.MakeVariant(expectedProp2)).Err
+			"org.lingmo.lib.Object10", "Prop2", dbus.MakeVariant(expectedProp2)).Err
 
 		if err != nil {
 			t.Error("Unexpected error setting Prop2:", err)
@@ -1363,7 +1363,7 @@ func TestService_StructProp(t *testing.T) {
 
 	testProp3 := func() {
 		err = clientObj10.Call(orgFreedesktopDBus+".Properties.Set", 0,
-			"org.deepin.dde.lib.Object10", "Prop3", dbus.MakeVariant(expectedProp3)).Err
+			"org.lingmo.lib.Object10", "Prop3", dbus.MakeVariant(expectedProp3)).Err
 
 		if err != nil {
 			t.Error("Unexpected error setting Prop3", err)
@@ -1386,7 +1386,7 @@ func TestService_StructProp(t *testing.T) {
 	}
 	testProp4 := func() {
 		err = clientObj10.Call(orgFreedesktopDBus+".Properties.Set", 0,
-			"org.deepin.dde.lib.Object10", "Prop4", dbus.MakeVariant(expectedProp4)).Err
+			"org.lingmo.lib.Object10", "Prop4", dbus.MakeVariant(expectedProp4)).Err
 
 		if err != nil {
 			t.Error("Unexpected error setting Prop4:", err)
@@ -1420,7 +1420,7 @@ func (*srvObject11) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject11) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object11"
+	return "org.lingmo.lib.Object11"
 }
 
 type customProperty struct {
@@ -1456,7 +1456,7 @@ func TestService_DumpProperties(t *testing.T) {
 	srvObj11 := &srvObject11{
 		Prop5: &customProperty{5},
 	}
-	err = service.Export("/org/deepin/dde/lib/Object11", srvObj11.GetInterfaceName(), srvObj11)
+	err = service.Export("/org/lingmo/lib/Object11", srvObj11.GetInterfaceName(), srvObj11)
 	if err != nil {
 		t.Error("Unexpected error exporting srvObj11:", err)
 	}
@@ -1490,7 +1490,7 @@ func (*srvObject13) GetExportedMethods() ExportedMethods {
 }
 
 func (*srvObject13) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Object13"
+	return "org.lingmo.lib.Object13"
 }
 
 func TestService_IntUintProp(t *testing.T) {
@@ -1510,7 +1510,7 @@ func TestService_IntUintProp(t *testing.T) {
 		Prop3: integers{3, 4},
 	}
 
-	serverObject13, err := service.NewServerObject("/org/deepin/dde/lib/Object13")
+	serverObject13, err := service.NewServerObject("/org/lingmo/lib/Object13")
 	if err != nil {
 		t.Error("Unexpected error:", err)
 	}
@@ -1536,17 +1536,17 @@ func TestService_IntUintProp(t *testing.T) {
 		t.Error("Unexpected error exporting srvObj13:", err)
 	}
 
-	_ = service.RequestName("org.deepin.dde.lib.Object13")
+	_ = service.RequestName("org.lingmo.lib.Object13")
 	if err != nil {
 		t.Error("Unexpected error calling RequestName:", err)
 	}
 
-	clientObj13 := service.conn.Object("org.deepin.dde.lib.Object13", "/org/deepin/dde/lib/Object13")
+	clientObj13 := service.conn.Object("org.lingmo.lib.Object13", "/org/lingmo/lib/Object13")
 
 	// Test Prop1
 	testProp1 := func() {
 		err = clientObj13.Call(orgFreedesktopDBus+".Properties.Set", 0,
-			"org.deepin.dde.lib.Object13", "Prop1", dbus.MakeVariant(int32(11))).Err
+			"org.lingmo.lib.Object13", "Prop1", dbus.MakeVariant(int32(11))).Err
 		if err != nil {
 			t.Error("Unexpected error setting Prop1:", err)
 		}
@@ -1565,7 +1565,7 @@ func TestService_IntUintProp(t *testing.T) {
 	// Test Prop2
 	testProp2 := func() {
 		err = clientObj13.Call(orgFreedesktopDBus+".Properties.Set", 0,
-			"org.deepin.dde.lib.Object13", "Prop2", dbus.MakeVariant(uint32(12))).Err
+			"org.lingmo.lib.Object13", "Prop2", dbus.MakeVariant(uint32(12))).Err
 		if err != nil {
 			t.Error("Unexpected error setting Prop2:", err)
 		}
@@ -1585,7 +1585,7 @@ func TestService_IntUintProp(t *testing.T) {
 	expectedProp3 := integers{6, 7}
 	testProp3 := func() {
 		err = clientObj13.Call(orgFreedesktopDBus+".Properties.Set", 0,
-			"org.deepin.dde.lib.Object13", "Prop3", dbus.MakeVariant(struct {
+			"org.lingmo.lib.Object13", "Prop3", dbus.MakeVariant(struct {
 				A int32
 				B uint32
 			}{6, 7})).Err

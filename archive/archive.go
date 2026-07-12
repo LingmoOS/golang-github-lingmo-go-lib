@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/linuxdeepin/go-lib/archive/gzip"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/archive/gzip"
 )
 
 const (

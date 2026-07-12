@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"os"
 	"path"
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 var (

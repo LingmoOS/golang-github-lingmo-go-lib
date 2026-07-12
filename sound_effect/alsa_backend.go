@@ -7,7 +7,7 @@ package sound_effect
 import (
 	"unsafe"
 
-	"github.com/linuxdeepin/go-lib/asound"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/asound"
 )
 
 type ALSAPlayBackend struct {

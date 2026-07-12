@@ -13,7 +13,7 @@ import (
 	"runtime/pprof"
 	"sync"
 
-	"github.com/linuxdeepin/go-lib/initializer/v2"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/initializer/v2"
 )
 
 type _Profile struct {

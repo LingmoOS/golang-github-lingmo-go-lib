@@ -18,7 +18,7 @@ func (*impl1) GetExportedMethods() ExportedMethods {
 }
 
 func (*impl1) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Exportable1"
+	return "org.lingmo.lib.Exportable1"
 }
 
 func TestMakeError(t *testing.T) {
@@ -90,7 +90,7 @@ func (err namedError) Name() string {
 func TestToError(t *testing.T) {
 	err := ToError(unnamedError{})
 	expectedErr := &dbus.Error{
-		Name: "org.deepin.dde.DBus.Error.Unnamed",
+		Name: "org.lingmo.DBus.Error.Unnamed",
 		Body: []interface{}{"xxx err msg"},
 	}
 

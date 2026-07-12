@@ -14,8 +14,8 @@ import (
 
 	_ "golang.org/x/image/bmp"
 	_ "golang.org/x/image/tiff"
-	"github.com/linuxdeepin/go-lib/gdkpixbuf"
-	"github.com/linuxdeepin/go-lib/strv"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gdkpixbuf"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
 )
 
 const (

@@ -14,9 +14,9 @@ import (
 	"sort"
 	"unicode"
 
-	"github.com/linuxdeepin/go-lib/strv"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
 
-	"github.com/linuxdeepin/go-lib/dbusutilv1"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutilv1"
 )
 
 func (g *Generator) genExportedMethods(types strv.Strv) {

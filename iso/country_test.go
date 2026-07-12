@@ -8,7 +8,7 @@ import (
 	"os"
 	"testing"
 
-	. "github.com/linuxdeepin/go-lib/gettext"
+	. "github.com/LingmoOS/golang-github-lingmo-go-lib/gettext"
 	"github.com/stretchr/testify/require"
 
 	"github.com/stretchr/testify/assert"

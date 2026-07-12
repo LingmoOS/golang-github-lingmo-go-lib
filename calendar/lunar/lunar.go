@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/linuxdeepin/go-lib/calendar/util"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/calendar/util"
 )
 
 // Calendar 保存公历年内计算农历所需的信息

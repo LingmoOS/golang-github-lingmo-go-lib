@@ -5,7 +5,7 @@
 package calendar
 
 import (
-	"github.com/linuxdeepin/go-lib/calendar/lunar"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/calendar/lunar"
 )
 
 /*

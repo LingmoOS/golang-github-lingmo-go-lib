@@ -7,7 +7,7 @@ package utils
 import (
 	"fmt"
 
-	"github.com/linuxdeepin/go-gir/gio-2.0"
+	"github.com/LingmoOS/go-gir-generator/gio-2.0"
 )
 
 func CheckAndNewGSettings(schema string) (*gio.Settings, error) {

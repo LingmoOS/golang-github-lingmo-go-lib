@@ -5,7 +5,7 @@
 package notify
 
 import (
-	"github.com/linuxdeepin/go-lib/notify/dbusnotify"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/notify/dbusnotify"
 )
 
 var (

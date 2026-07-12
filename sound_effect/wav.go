@@ -10,8 +10,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/linuxdeepin/go-lib/asound"
-	paSimple "github.com/linuxdeepin/go-lib/pulse/simple"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/asound"
+	paSimple "github.com/LingmoOS/golang-github-lingmo-go-lib/pulse/simple"
 	wav "github.com/youpy/go-wav"
 )
 

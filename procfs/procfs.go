@@ -14,7 +14,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/linuxdeepin/go-lib/encoding/kv"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/encoding/kv"
 )
 
 type Process uint

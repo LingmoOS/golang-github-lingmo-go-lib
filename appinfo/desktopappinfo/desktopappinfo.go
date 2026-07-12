@@ -16,11 +16,11 @@ import (
 	"time"
 
 	"github.com/godbus/dbus/v5"
-	gio "github.com/linuxdeepin/go-gir/gio-2.0"
-	"github.com/linuxdeepin/go-lib/appinfo"
-	"github.com/linuxdeepin/go-lib/keyfile"
-	"github.com/linuxdeepin/go-lib/shell"
-	"github.com/linuxdeepin/go-lib/xdg/basedir"
+	gio "github.com/LingmoOS/go-gir-generator/gio-2.0"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/appinfo"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/keyfile"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/shell"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/xdg/basedir"
 )
 
 const (

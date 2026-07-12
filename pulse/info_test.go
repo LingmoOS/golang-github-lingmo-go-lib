@@ -8,7 +8,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/linuxdeepin/go-lib/xdg/basedir"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/xdg/basedir"
 )
 
 // Please manually enable test CFLAGS in ./pulse.go

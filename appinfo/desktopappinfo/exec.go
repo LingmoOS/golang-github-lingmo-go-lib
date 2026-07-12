@@ -11,7 +11,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 func getDefaultTerminal() (exec string, execArg string) {

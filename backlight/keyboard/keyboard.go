@@ -6,7 +6,7 @@ package keyboard
 
 import (
 	"path/filepath"
-	. "github.com/linuxdeepin/go-lib/backlight/common"
+	. "github.com/LingmoOS/golang-github-lingmo-go-lib/backlight/common"
 	"strings"
 )
 

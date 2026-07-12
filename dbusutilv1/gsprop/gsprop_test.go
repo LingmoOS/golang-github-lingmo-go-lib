@@ -12,9 +12,9 @@ import (
 
 	"github.com/godbus/dbus/v5"
 	"github.com/godbus/dbus/v5/introspect"
-	gio "github.com/linuxdeepin/go-gir/gio-2.0"
-	"github.com/linuxdeepin/go-lib/dbusutilv1"
-	"github.com/linuxdeepin/go-lib/gsettings"
+	gio "github.com/LingmoOS/go-gir-generator/gio-2.0"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutilv1"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gsettings"
 )
 
 const demoSchemaId = "ca.desrt.dconf-editor.Demo"
@@ -29,7 +29,7 @@ type srvObject1 struct {
 	Strv   Strv   `prop:"access:rw"`
 }
 
-const srvObj1Interface = "org.deepin.dde.lib.gsprop.Object1"
+const srvObj1Interface = "org.lingmo.lib.gsprop.Object1"
 
 func (o *srvObject1) GetExportedMethods() dbusutilv1.ExportedMethods {
 	return nil
@@ -73,7 +73,7 @@ gsettings set ca.desrt.dconf-editor.Demo string-array '["go","perl","python", "c
 		t.Error("Unexpected error:", err)
 	}
 
-	const srvObj1Path = "/org/deepin/dde/lib/gsprop/Object1"
+	const srvObj1Path = "/org/lingmo/lib/gsprop/Object1"
 	err = service.Export(srvObj1Path, srvObj1Interface, srvObj1)
 	if err != nil {
 		t.Error("Unexpected error export srvObj1:", err)

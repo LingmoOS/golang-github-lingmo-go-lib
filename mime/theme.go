@@ -7,7 +7,7 @@ package mime
 import (
 	"fmt"
 	"path"
-	dutils "github.com/linuxdeepin/go-lib/utils"
+	dutils "github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 const (

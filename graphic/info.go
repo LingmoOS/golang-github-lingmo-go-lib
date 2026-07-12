@@ -7,7 +7,7 @@ package graphic
 import (
 	"image"
 	"os"
-	dutils "github.com/linuxdeepin/go-lib/utils"
+	dutils "github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 // GetImageSize return image's width and height.

@@ -6,7 +6,7 @@ package lunar
 
 import (
 	"math"
-	"github.com/linuxdeepin/go-lib/calendar/util"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/calendar/util"
 )
 
 var SolarTermNames = []string{

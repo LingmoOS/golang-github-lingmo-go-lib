@@ -8,7 +8,7 @@ import (
 	"image"
 	"image/draw"
 	"os"
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 func generateCacheFilePath(keyword string) (dstfile string) {

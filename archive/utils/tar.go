@@ -10,7 +10,7 @@ import (
 	"io"
 	"os"
 	"path"
-	dutils "github.com/linuxdeepin/go-lib/utils"
+	dutils "github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 func TarWriterCompressFiles(writer *tar.Writer, files []string) error {

@@ -8,7 +8,7 @@ import (
 	"archive/tar"
 	"compress/gzip"
 	"os"
-	"github.com/linuxdeepin/go-lib/archive/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/archive/utils"
 )
 
 func tarCompressFiles(files []string, dest string) error {

@@ -17,7 +17,7 @@ import (
 	"unsafe"
 
 	x "github.com/linuxdeepin/go-x11-client"
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 // Format defines the type of image format.

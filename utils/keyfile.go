@@ -9,7 +9,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/linuxdeepin/go-gir/glib-2.0"
+	"github.com/LingmoOS/go-gir-generator/glib-2.0"
 )
 
 var (

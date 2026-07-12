@@ -7,8 +7,8 @@ package app
 
 import (
 	"fmt"
-	"github.com/linuxdeepin/go-lib/log"
-	"github.com/linuxdeepin/go-lib/profile"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/profile"
 	"gopkg.in/alecthomas/kingpin.v2"
 	"strings"
 )

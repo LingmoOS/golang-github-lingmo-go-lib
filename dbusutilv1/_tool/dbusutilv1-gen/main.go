@@ -18,7 +18,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/linuxdeepin/go-lib/strv"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
 )
 
 func astNodeToStr(fSet *token.FileSet, node interface{}) (string, error) {
@@ -249,7 +249,7 @@ func main() {
 		if _outputFile == "" {
 			_outputFile = "exported_methods_auto.go"
 		}
-		g.pkg.extraImports = append(g.pkg.extraImports, `"github.com/linuxdeepin/go-lib/dbusutilv1"`)
+		g.pkg.extraImports = append(g.pkg.extraImports, `"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutilv1"`)
 		g.genHeader()
 		g.genExportedMethods(types)
 	} else {

@@ -5,7 +5,7 @@
 package lunar
 
 import (
-	"github.com/linuxdeepin/go-lib/calendar/util"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/calendar/util"
 	"testing"
 )
 

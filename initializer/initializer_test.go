@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
-	. "github.com/linuxdeepin/go-lib/initializer"
+	. "github.com/LingmoOS/golang-github-lingmo-go-lib/initializer"
 )
 
 func TestInitializer(t *testing.T) {

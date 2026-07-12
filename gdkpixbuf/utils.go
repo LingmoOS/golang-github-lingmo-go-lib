@@ -5,8 +5,8 @@
 package gdkpixbuf
 
 import (
-	"github.com/linuxdeepin/go-lib/graphic"
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/graphic"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 // function links to lib/graphic

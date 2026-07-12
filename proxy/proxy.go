@@ -12,10 +12,10 @@ import (
 
 	"github.com/godbus/dbus/v5"
 
-	"github.com/linuxdeepin/go-gir/gio-2.0"
-	"github.com/linuxdeepin/go-lib/gsettings"
-	"github.com/linuxdeepin/go-lib/log"
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/go-gir-generator/gio-2.0"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gsettings"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 // Synchronize proxy gsettings to environment variables.

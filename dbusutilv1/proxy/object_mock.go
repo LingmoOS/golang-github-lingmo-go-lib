@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/go-lib/dbusutilv1"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutilv1"
 	"github.com/stretchr/testify/mock"
 )
 

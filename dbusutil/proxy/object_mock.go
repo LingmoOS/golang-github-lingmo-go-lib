@@ -9,7 +9,7 @@ import (
 
 	"github.com/godbus/dbus/v5"
 	"github.com/stretchr/testify/mock"
-	"github.com/linuxdeepin/go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
 )
 
 type MockObject struct {

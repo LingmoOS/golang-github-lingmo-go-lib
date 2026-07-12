@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	. "github.com/linuxdeepin/go-lib/gettext"
+	. "github.com/LingmoOS/golang-github-lingmo-go-lib/gettext"
 	"strings"
 	"sync"
 )

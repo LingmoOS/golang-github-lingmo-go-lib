@@ -11,7 +11,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	libLocale "github.com/linuxdeepin/go-lib/locale"
+	libLocale "github.com/LingmoOS/golang-github-lingmo-go-lib/locale"
 )
 
 func parseValueAsBool(value string) (bool, error) {

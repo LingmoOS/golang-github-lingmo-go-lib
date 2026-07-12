@@ -19,13 +19,13 @@ func (*impl1) GetExportedMethods() ExportedMethods {
 }
 
 func (*impl1) GetInterfaceName() string {
-	return "org.deepin.dde.lib.Exportable1"
+	return "org.lingmo.lib.Exportable1"
 }
 
 func TestMakeError(t *testing.T) {
 	err := MakeError(&impl1{}, "Err1", "abc", 123)
 	expectedErr := &dbus.Error{
-		Name: "org.deepin.dde.lib.Exportable1.Error.Err1",
+		Name: "org.lingmo.lib.Exportable1.Error.Err1",
 		Body: []interface{}{"abc123"},
 	}
 	if !reflect.DeepEqual(err, expectedErr) {
@@ -36,7 +36,7 @@ func TestMakeError(t *testing.T) {
 func TestMakeErrorf(t *testing.T) {
 	err := MakeErrorf(&impl1{}, "Err2", "name: %s, num: %d", "abc", 123)
 	expectedErr := &dbus.Error{
-		Name: "org.deepin.dde.lib.Exportable1.Error.Err2",
+		Name: "org.lingmo.lib.Exportable1.Error.Err2",
 		Body: []interface{}{"name: abc, num: 123"},
 	}
 	if !reflect.DeepEqual(err, expectedErr) {
@@ -52,7 +52,7 @@ func TestMakeErrorJSON(t *testing.T) {
 	err := MakeErrorJSON(&impl1{}, "Err3", detail)
 
 	expectedErr := &dbus.Error{
-		Name: "org.deepin.dde.lib.Exportable1.Error.Err3",
+		Name: "org.lingmo.lib.Exportable1.Error.Err3",
 		Body: []interface{}{`{"name":"abc","num":123}`},
 	}
 
@@ -85,13 +85,13 @@ func (err namedError) Error() string {
 }
 
 func (err namedError) Name() string {
-	return "org.deepin.dde.lib.Exportable1.Error.Err4"
+	return "org.lingmo.lib.Exportable1.Error.Err4"
 }
 
 func TestToError(t *testing.T) {
 	err := ToError(unnamedError{})
 	expectedErr := &dbus.Error{
-		Name: "org.deepin.dde.DBus.Error.Unnamed",
+		Name: "org.lingmo.DBus.Error.Unnamed",
 		Body: []interface{}{"xxx err msg"},
 	}
 
@@ -101,7 +101,7 @@ func TestToError(t *testing.T) {
 
 	err = ToError(namedError{})
 	expectedErr = &dbus.Error{
-		Name: "org.deepin.dde.lib.Exportable1.Error.Err4",
+		Name: "org.lingmo.lib.Exportable1.Error.Err4",
 		Body: []interface{}{"yyy err msg"},
 	}
 

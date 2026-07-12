@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/linuxdeepin/go-lib/calendar/util"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/calendar/util"
 )
 
 func TestSolarTerms(t *testing.T) {

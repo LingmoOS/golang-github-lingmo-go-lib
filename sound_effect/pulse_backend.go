@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/linuxdeepin/go-lib/pulse"
-	paSimple "github.com/linuxdeepin/go-lib/pulse/simple"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/pulse"
+	paSimple "github.com/LingmoOS/golang-github-lingmo-go-lib/pulse/simple"
 )
 
 type PulseAudioPlayBackend struct {

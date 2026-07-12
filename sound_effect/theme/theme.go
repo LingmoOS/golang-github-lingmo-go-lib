@@ -9,9 +9,9 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"github.com/linuxdeepin/go-lib/keyfile"
-	"github.com/linuxdeepin/go-lib/strv"
-	"github.com/linuxdeepin/go-lib/xdg/basedir"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/keyfile"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/xdg/basedir"
 	"strings"
 	"sync"
 )

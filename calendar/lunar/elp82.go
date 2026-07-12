@@ -7,7 +7,7 @@ package lunar
 import (
 	"math"
 
-	"github.com/linuxdeepin/go-lib/calendar/util"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/calendar/util"
 )
 
 // 参数 T 儒略世纪数

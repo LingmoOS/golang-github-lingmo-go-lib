@@ -12,7 +12,7 @@ import "C"
 
 import (
 	"fmt"
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 // BlurImage generate blur effect to an image file.

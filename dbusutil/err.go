@@ -71,7 +71,7 @@ func ToError(err error) *dbus.Error {
 		name = err0.Name()
 		msg = err0.Error()
 	} else {
-		name = "org.deepin.dde.DBus.Error.Unnamed"
+		name = "org.lingmo.DBus.Error.Unnamed"
 		msg = err.Error()
 	}
 	return &dbus.Error{
