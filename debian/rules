@@ -3,7 +3,7 @@
 
 export GOCACHE := /tmp/gocache
 
-export DH_GOPKG := github.com/linuxdeepin/go-lib
+export DH_GOPKG := github.com/LingmoOS/golang-github-lingmo-go-lib
 export DH_GOLANG_INSTALL_ALL := 1
 
 %:

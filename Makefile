@@ -1,5 +1,5 @@
 GOPATH_DIR = gopath
-GOPKG_PREFIX = github.com/linuxdeepin/go-lib
+GOPKG_PREFIX = github.com/LingmoOS/golang-github-lingmo-go-lib
 
 prepare:
 	@mkdir -p ${GOPATH_DIR}/src/$(dir ${GOPKG_PREFIX});
